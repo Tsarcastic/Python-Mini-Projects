@@ -11,7 +11,7 @@ hangedMan = {} #for the drawings of the hanged man
 for i in rightAnswer:
     theirView.append("_")
 
-theirLetters = " ".join(theirView) #Creates a word from the list of Theirview - with a space between to display underscores
+theirLetters = " ".join(theirView) #Creates a word from the list of Theirview - with a space between
 guessPhrase =  "You have " + str(guesses) + " guesses remaining."
 wordPhrase = "You know your word has the following letters. " + theirLetters
 
@@ -26,8 +26,12 @@ def checkAnswer(input):
             matchInWord += 1
             print "That's in the word!"
             theirView[a] = input
+            print theirView
+            theirLetters= " ".join(theirView)
+            print theirLetters
     if matchInWord < 1:
-        guesses += -1
+        global guesses
+        guesses += -1 
     print hangedMan[guesses]    
             
 
@@ -88,9 +92,10 @@ hangedMan[6] = """
 
 print hangedMan[6]
 
-printout()
-
-checkAnswer(raw_input('Which letter would you like to check?'))
+while guesses > 1:
+    theirLetters = " ".join(theirView)
+    printout()
+    checkAnswer(raw_input('Which letter would you like to check?'))
 
  
 #then we check to see if it's only one letter -give an error & new raw_input if they do
