@@ -1,9 +1,7 @@
 from random import *
 list = ['consider', 'minute', 'accord']
 rightAnswer = list[randint(0,2)] #The answer in the form of a list
-answerList = rightAnswer.split() #The answer in the form of a word
-numLetters = len(rightAnswer) #The number of letters for the answer
-theirTrack = numLetters * "_"
+theirTrack = len(rightAnswer) * "_"
 theirView = [] #The portion of the puzzle they have solved - or blank spaces if they haven't. 
 guesses = 6 #Guesses remaining
 hangedMan = {} #for the drawings of the hanged man
@@ -12,23 +10,14 @@ for i in rightAnswer:
     theirView.append("_")
 
 theirLetters = " ".join(theirView) #Creates a word from the list of Theirview - with a space between
-guessPhrase =  "You have " + str(guesses) + " guesses remaining."
-wordPhrase = "You know your word has the following letters. " + theirLetters
-
-def printout():
-    print guessPhrase
-    print wordPhrase
 
 def checkAnswer(input):
     matchInWord = 0
     for a, item in enumerate(rightAnswer): #cycle through the answer list
         if input == item:
             matchInWord += 1
-            print "That's in the word!"
             theirView[a] = input
-            print theirView
             theirLetters= " ".join(theirView)
-            print theirLetters
     if matchInWord < 1:
         global guesses
         guesses += -1 
@@ -92,10 +81,14 @@ hangedMan[6] = """
 
 print hangedMan[6]
 
-while guesses > 1:
+while guesses > 0: #The game itself
     theirLetters = " ".join(theirView)
-    printout()
+    print "You know your word has the following letters. " + theirLetters
     checkAnswer(raw_input('Which letter would you like to check?'))
+    check = "".join(theirView)
+    if check == rightAnswer:
+        print "Congratulations! Little homey doesn't have to die."
+        break
 
  
 #then we check to see if it's only one letter -give an error & new raw_input if they do
