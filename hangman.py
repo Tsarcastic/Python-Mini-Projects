@@ -11,7 +11,7 @@ for i in rightAnswer:
 
 theirLetters = " ".join(theirView) #Creates a word from the list of Theirview - with a space between
 
-def checkAnswer(input):
+def checkAnswer(input): #Takes a letter as an input and checks it
     matchInWord = 0
     for a, item in enumerate(rightAnswer): #cycle through the answer list
         if input == item:
@@ -79,18 +79,18 @@ hangedMan[6] = """
                          |
    """
 
-print hangedMan[6]
 
-while guesses > 0: #The game itself
-    theirLetters = " ".join(theirView)
-    print "You know your word has the following letters. " + theirLetters
-    checkAnswer(raw_input('Which letter would you like to check?'))
-    check = "".join(theirView)
-    if check == rightAnswer:
-        print "Congratulations! Little homey doesn't have to die."
-        break
 
+def runGame():
+    print hangedMan[6]
+    while guesses > 0: #The game itself
+        theirLetters = " ".join(theirView)
+        print "You know your word has the following letters. " + theirLetters
+        checkAnswer(raw_input('Which letter would you like to check?'))
+        check = "".join(theirView)
+        if check == rightAnswer:
+            print theirLetters
+            print "Congratulations! Little homey doesn't have to die."
+            break
+runGame()
  
-#then we check to see if it's only one letter -give an error & new raw_input if they do
-#then we split theirLetters and run a forLoop to see if the letter matches any of those letters
-#then we use dark sorcery to replace the "_" function above with actual letters
