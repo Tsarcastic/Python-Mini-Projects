@@ -35,12 +35,17 @@ def enterOrder():
                print '${:,.2f}'.format(totalPrice)
                
                global listOfItems
-               listOfItems[menu[a]] = 1
+               if menu[a] in listOfItems:
+                   listOfItems[menu[a]] += 1
+               else: 
+                   listOfItems[menu[a]] = 1
                print listOfItems
+    print "Your total comes to " + str('${:,.2f}'.format(totalPrice))         
 
-
-enterOrder()
 
 
 #for a in menu: #Reference - Will print name of menu item & the price
     #print menu[a] + " \t " + str(prices[menu[a]])
+
+while 1 > 0:
+    enterOrder()
