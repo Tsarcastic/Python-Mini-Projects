@@ -20,7 +20,7 @@ def diceRoller():
         rolls += -1
 
     
-    for x in xrange(1, 5):
+    for x in listOfNum:
         print str(x) + " was rolled " + str(float(listOfNum[x]) / float(totalRolls) * 100) + "% of the time."
     
     print totalRolls
