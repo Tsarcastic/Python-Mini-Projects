@@ -1,6 +1,4 @@
 list = []
-number = 36
-
 
 def factor(num):
     for i in range(1, num+1):
